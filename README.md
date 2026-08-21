@@ -11,27 +11,49 @@ At the end of the test, the user is asked if they want to consult a didactic res
 # Instructions # 
 
 Inputs: 
+
   Topic for the test or general test
+
   The answers given by the user throughout the test
-  If they want didactic resources
-Outputs: 
-  Right or wrong answer
-  Calculated answer
-  Corresponding questions
-  Final results
-  Corresponding didactic material 
-Process:
-  Analyze the topic wanted for the test
-  Based on the answer, determine which questions to throw the user
-  Import random values for the coeficients of equiations, in the case of algebraic fractions also randomize the values for exponents of variables
-  Determine the question to show the user
-  Show the user the question
-  Read the user's answer 
-  Calculate the result 
-  Show the user if it got the question right or wrong
-  Repeat this process until all the questions asigned are showed and answered
-  Show the final grade of the user
-  Ask if they want didactic material to reinforce
-  If yes, then locate the specific material corresponding to the wrong answers
-  If not, end program
   
+  If they want didactic resources
+  
+Outputs: 
+
+  Right or wrong answer
+  
+  Calculated answer
+  
+  Corresponding questions
+  
+  Final results
+  
+  Corresponding didactic material 
+  
+Process:
+
+  Analyze the topic wanted for the test
+  
+  Based on the answer, determine which questions to throw the user
+  
+  Import random values for the coeficients of equiations, in the case of algebraic fractions also randomize the values for exponents of variables
+  
+  Determine the question to show the user
+  
+  Show the user the question
+  
+  Read the user's answer 
+  
+  Calculate the result 
+  
+  Show the user if it got the question right or wrong
+  
+  Repeat this process until all the questions asigned are showed and answered
+  
+  Show the final grade of the user
+  
+  Ask if they want didactic material to reinforce
+  
+  If yes, then locate the specific material corresponding to the wrong answers
+  
+  If not, end program
