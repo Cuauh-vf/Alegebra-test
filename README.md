@@ -8,6 +8,8 @@ This test is designed to evaluate the users knowledge on different topics of alg
 
 At the end of the test, the user is asked if they want to consult a didactic resource to reinforce their knowledge based on the questions that they got wrong, and the program should throw them the material in accordance to the mistakes made. 
 
+(I still need to look for and research which didactic materials I'm going to use for the feedback, but it is probabl to be some book form TEC's digital library or open source)
+
 # Instructions # 
 
 Inputs: 
