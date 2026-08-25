@@ -10,6 +10,8 @@ At the end of the test, the user is asked if they want to consult a didactic res
 
 (I still need to look for and research which didactic materials I'm going to use for the feedback, but it is probably going to be some book form TEC's digital library or open source)
 
+(The matrices are going to be implemented in the calculation of the results of systems of equations, and the files are going to be involved in the didactic material)
+
 # Instructions # 
 
 Inputs: 
