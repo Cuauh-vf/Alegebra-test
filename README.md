@@ -16,48 +16,48 @@ At the end of the test, the user is asked if they want to consult a didactic res
 
 Inputs: 
 
-  Topic for the test or general test
+  -Topic for the test or general test
 
-  The answers given by the user throughout the test
+  -The answers given by the user throughout the test
   
-  If they want didactic resources
+  -If they want didactic resources
   
 Outputs: 
 
-  Right or wrong answer
+  -Right or wrong answer
   
-  Calculated answer
+  -Calculated answer
   
-  Corresponding questions
+  -Corresponding questions
   
-  Final results
+  -Final results
   
-  Corresponding didactic material 
+  -Corresponding didactic material 
   
 Process:
 
-  Analyze the topic wanted for the test
+  1. Analyze the topic wanted for the test
   
-  Based on the answer, determine which questions to throw the user
+  2. Based on the answer, determine which questions to throw the user
   
-  Import random values for the coeficients of equiations, in the case of algebraic fractions also randomize the values for exponents of variables
+  3. Import random values for the coeficients of equiations, in the case of algebraic fractions also randomize the values for exponents of variables
   
-  Determine the question to show the user
+  4. Determine the question to show the user
   
-  Show the user the question
+  5. Show the user the question
   
-  Read the user's answer 
+  6. Read the user's answer 
   
-  Calculate the result 
+  7. Calculate the result 
   
-  Show the user if it got the question right or wrong
+  8. Show the user if it got the question right or wrong
   
-  Repeat this process until all the questions asigned are showed and answered
+  9. Repeat this process until all the questions asigned are showed and answered
   
-  Show the final grade of the user
+  10. Show the final grade of the user
   
-  Ask if they want didactic material to reinforce
+  11. Ask if they want didactic material to reinforce
   
-  If yes, then locate the specific material corresponding to the wrong answers
+  12. If yes, then locate the specific material corresponding to the wrong answers
   
-  If not, end program
+  13. If not, end program
