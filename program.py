@@ -85,9 +85,28 @@ def binomio():
 #function for algebraic fractions
 def fractions():
   print("fracciones")
-  return
+  coeficienteA1=random.randint(-12,11)
+  coeficienteA2=random.randint(-12,11)
+  coeficienteZ1=random.randint(-12,11)
+  coeficienteZ2=random.randint(-12,11)
+  coeficienteW1=random.randint(-12,11)
+  coeficienteW2=random.randint(-12,11)
+  exponente=random.randint(1,3)
+  seleccionar=random.randint(1,3)#esta variable es para simplificar la funcion, si no hiciera esto, la funcion arrogaría 6 resultados
+  print("((a^%i * z^%i * w^%i)/(a^%i * z^%i * w^%i))^%i" %(coeficienteA1,coeficienteZ1,coeficienteW1,coeficienteA2,coeficienteZ2,coeficienteW2,exponente))
+  if seleccionar==1:#aleatorizar cuál variable vamos a "resolver" para poder utilizar la funcion de verificador 
+      userA=int(input("What is the exponent of variable a: "))
+      compA=(coeficienteA1-coeficienteA2)*exponente
+      return userA,compA
+  elif seleccionar==2:
+      userZ=int(input("Exponent of variable z: "))
+      compZ=(coeficienteZ1-coeficienteZ2)*exponente
+      return userZ,compZ
+  elif seleccionar==3:
+      userW=int(input("Exponent of variable w: "))
+      compW=(coeficienteW1-coeficienteW2)*exponente
+      return userW,compW
   
-    
 calificacion=0
 opcion=int(input("Hello user, welcome to the algebra test, the objective of this test is evaluate your knowledge on this fundamental topic for engineering.\n Now please select which topic do you want to practice:  \n General test (1) \n First and second degree equations (2) \n Systems of equations (3) \n Development of binomials (4) \n Simplification of algebraic fractions (5) \n:"))
 if opcion==1:
@@ -107,4 +126,11 @@ elif opcion==3:
 elif opcion==4:
     binomio()
 elif opcion==5:
-    fractions()
+    resp,respUser=fractions()
+    calificacion=verificador(resp,respUser,calificacion)
+    resp,respUser=fractions()
+    calificacion=verificador(resp,respUser,calificacion)
+    resp,respUser=fractions()
+    calificacion=verificador(resp,respUser,calificacion)
+    resp,respUser=fractions()
+    calificacion=verificador(resp,respUser,calificacion)
