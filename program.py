@@ -61,7 +61,7 @@ def ecuaciones_lineales():
   print("Lineal")
   coeficiente=random.randint(1,10)
   terminoInd=random.randint(-15,15)
-  terminoInd2=random.randint(0,15)
+  terminoInd2=random.randint(-15,15)
   print("Given the equation %ix + %i = %i, x is equal to what? (Give the answer with 2 decimals rounding up)" %(coeficiente,terminoInd,terminoInd2))
   answerUser=float(input(": "))
   answerComp=round((terminoInd2-terminoInd)/coeficiente,2)
@@ -86,10 +86,6 @@ def binomio():
 def fractions():
   print("fracciones")
   return
-#function for general test
-def general_test():
-  print("Test general")
-  #ecuaciones_lineales()
   
     
 calificacion=0
@@ -99,10 +95,16 @@ if opcion==1:
 elif opcion==2:
     resp,respUser=ecuaciones_lineales()
     calificacion=verificador(resp,respUser,calificacion)
+    resp,respUser=ecuaciones_lineales()
+    calificacion=verificador(resp,respUser,calificacion)
+    """resp,respUser=ecuaciones_cuadraticas()
+    calificacion=verificador(resp,respUser,calificacion)
+    resp,respUser=ecuaciones_cuadraticas()
+    calificacion=verificador(resp,respUser,calificacion)"""
     
 elif opcion==3:
     sistemas_ecuaciones_1()
 elif opcion==4:
-    binomios()
+    binomio()
 elif opcion==5:
     fractions()
