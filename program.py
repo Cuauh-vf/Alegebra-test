@@ -43,10 +43,29 @@ Process:
 """Here we are going to define the functions used in the main program"""
 import random
 import math
+#funcion para mostrar respuesta
+def mostrador(c,u,cal):
+    print("La respuesta correcta es: ",c)
+    print("Tu respuesta: ",u)
+    print("Calificacion: ", cal)
+
+#funcion para verificar las respuestas
+def verificador(comp,user,cal):
+    if comp==user:
+        cal=cal+1
+    mostrador(comp,user,cal)
+    return cal
+    
 #function for linear equations
 def ecuaciones_lineales():
   print("Lineal")
-  return 
+  coeficiente=random.randint(1,10)
+  terminoInd=random.randint(-15,15)
+  terminoInd2=random.randint(0,15)
+  print("Given the equation %ix + %i = %i, x is equal to what? (Give the answer with 2 decimals rounding up)" %(coeficiente,terminoInd,terminoInd2))
+  answerUser=float(input(": "))
+  answerComp=round((terminoInd2-terminoInd)/coeficiente,2)
+  return answerUser,answerComp
 #function for second degree functions
 def ecuaciones_cuadraticas():
   print("Cuadraticas")
@@ -72,18 +91,18 @@ def general_test():
   print("Test general")
   #ecuaciones_lineales()
   
-#main function
-def main():
-  opcion=int(input("Hello user, welcome to the algebra test, the objective of this test is evaluate your knowledge on this fundamental topic for engineering.\n Now please select which topic do you want to practice:  \n General test (1) \n First and second degree equations (2) \n Systems of equations (3) \n Development of binomials (4) \n Simplification of algebraic fractions (5) \n:"))
-  if opcion==1:
-    general_test()
-  elif opcion==2:
-    ecuaciones_lineales()
-  elif opcion==3:
-    sistemas_ecuaciones_1()
-  elif opcion==4:
-    binomios()
-  elif opcion==5:
-    fractions()
     
-main()
+calificacion=0
+opcion=int(input("Hello user, welcome to the algebra test, the objective of this test is evaluate your knowledge on this fundamental topic for engineering.\n Now please select which topic do you want to practice:  \n General test (1) \n First and second degree equations (2) \n Systems of equations (3) \n Development of binomials (4) \n Simplification of algebraic fractions (5) \n:"))
+if opcion==1:
+    general_test()
+elif opcion==2:
+    resp,respUser=ecuaciones_lineales()
+    calificacion=verificador(resp,respUser,calificacion)
+    
+elif opcion==3:
+    sistemas_ecuaciones_1()
+elif opcion==4:
+    binomios()
+elif opcion==5:
+    fractions()
