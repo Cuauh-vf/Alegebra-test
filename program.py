@@ -81,7 +81,63 @@ def sistemas_ecuaciones_2():
 #function for development of binomials
 def binomio():
   print("binomio")
-  return
+  coeficiente=random.randint(1,13)
+  terminoI=random.randint(-10,12)
+  exponente=random.randint(2,4)
+  seleccionador=random.randint(1,5)
+  print("(%ix+%i)^%i" %(coeficiente,terminoI,exponente))
+  if exponente==2: #estos ifs son para calcular los coeficientes del binomio presentado, si no se tendrían que calular más cosas
+      if seleccionador==1 or seleccionador==4:#esto es para solo preguntar por 1 respuesta al usuario, habilitando el uso de la función verificador
+          answerU=int(input("Give me the coeficient for the first term: "))
+          answerC=coeficiente**exponente
+          return answerU,answerC
+      elif seleccionador==2 or seleccionador==5:
+          answerU=int(input("Give me the coeficient for the second term: "))
+          answerC=2*coeficiente*terminoI
+          return answerU,answerC
+      elif seleccionador==3:
+          answerU=int(input("Give me the coeficient for the third term: "))
+          answerC=terminoI**exponente
+          return answerU,answerC
+  if exponente==3:
+      if seleccionador==1 or seleccionador==5:
+          answerU=int(input("Give me the coeficient for the first term: "))
+          answerC=coeficiente**exponente
+          return answerU,answerC
+      elif seleccionador==2:
+          answerU=int(input("Give me the coeficient for the second term: "))
+          answerC=3*(coeficiente**2)*terminoI
+          return answerU,answerC
+      elif seleccionador==3:
+          answerU=int(input("Give me the coeficient for the third term: "))
+          answerC=3*coeficiente*(terminoI**2)
+          return answerU,answerC
+      elif seleccionador==4:
+          answerU=int(input("Give me the coeficient of the fourth term: "))
+          answerC=terminoI**exponente
+          return answerU,answerC
+  if exponente==4:
+      if seleccionador==1:
+          answerU=int(input("Give me the coeficient for the first term: "))
+          answerC=coeficiente**exponente
+          return answerU,answerC
+      elif seleccionador==2:
+          answerU=int(input("Give me the coeficient for the second term: "))
+          answerC=4*(coeficiente**3)*terminoI
+          return answerU,answerC
+      elif seleccionador==3:
+          answerU=int(input("Give me the coeficient for the third term: "))
+          answerC=6*(coeficiente**2)*(terminoI**2)
+          return answerU,answerC
+      elif seleccionador==4:
+          answerU=int(input("Give me the coeficient of the fourth term: "))
+          anserC=4*coeficiente*(terminoI**3)
+          return answerU,answerC
+      elif seleccionador==5:
+          answerU=int(input("Give me the coeficient of the fifth term"))
+          answerC=terminoI**exponente
+          return answerU,answerC
+      
 #function for algebraic fractions
 def fractions():
   print("fracciones")
@@ -110,7 +166,7 @@ def fractions():
 calificacion=0
 opcion=int(input("Hello user, welcome to the algebra test, the objective of this test is evaluate your knowledge on this fundamental topic for engineering.\n Now please select which topic do you want to practice:  \n General test (1) \n First and second degree equations (2) \n Systems of equations (3) \n Development of binomials (4) \n Simplification of algebraic fractions (5) \n:"))
 if opcion==1:
-    general_test()
+    print("General test")
 elif opcion==2:
     resp,respUser=ecuaciones_lineales()
     calificacion=verificador(resp,respUser,calificacion)
@@ -124,7 +180,10 @@ elif opcion==2:
 elif opcion==3:
     sistemas_ecuaciones_1()
 elif opcion==4:
-    binomio()
+    resp,respUser=binomio()
+    calificacion=verificador(resp,respUser,calificacion)
+    resp,respUser=binomio()
+    calificacion=verificador(resp,respUser,calificacion)
 elif opcion==5:
     resp,respUser=fractions()
     calificacion=verificador(resp,respUser,calificacion)
