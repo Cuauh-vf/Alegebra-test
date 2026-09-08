@@ -43,6 +43,14 @@ Process:
 """Here we are going to define the functions used in the main program"""
 import random
 import math
+#function for test
+def tests():
+    mostrador(1,2,0)
+    mostrador(4,4,0)
+    mostrador(2,2,5)
+    verificador(1,2,0)
+    verificador(4,4,0)
+    verificador(2,2,5)
 #funcion para mostrar respuesta
 def mostrador(c,u,cal):
     print("La respuesta correcta es: ",c)
@@ -131,7 +139,7 @@ def binomio():
           return answerU,answerC
       elif seleccionador==4:
           answerU=int(input("Give me the coeficient of the fourth term: "))
-          anserC=4*coeficiente*(terminoI**3)
+          answerC=4*coeficiente*(terminoI**3)
           return answerU,answerC
       elif seleccionador==5:
           answerU=int(input("Give me the coeficient of the fifth term"))
@@ -141,7 +149,7 @@ def binomio():
 #function for algebraic fractions
 def fractions():
   print("fracciones")
-  coeficienteA1=random.randint(-12,11)
+  coeficienteA1=random.randint(-12,11)#se me fue el avión y en vez de poner exponente puse coeficiente, solo tomar eso en cuenta
   coeficienteA2=random.randint(-12,11)
   coeficienteZ1=random.randint(-12,11)
   coeficienteZ2=random.randint(-12,11)
@@ -162,34 +170,37 @@ def fractions():
       userW=int(input("Exponent of variable w: "))
       compW=(coeficienteW1-coeficienteW2)*exponente
       return userW,compW
-  
-calificacion=0
-opcion=int(input("Hello user, welcome to the algebra test, the objective of this test is evaluate your knowledge on this fundamental topic for engineering.\n Now please select which topic do you want to practice:  \n General test (1) \n First and second degree equations (2) \n Systems of equations (3) \n Development of binomials (4) \n Simplification of algebraic fractions (5) \n:"))
-if opcion==1:
-    print("General test")
-elif opcion==2:
-    resp,respUser=ecuaciones_lineales()
-    calificacion=verificador(resp,respUser,calificacion)
-    resp,respUser=ecuaciones_lineales()
-    calificacion=verificador(resp,respUser,calificacion)
-    """resp,respUser=ecuaciones_cuadraticas()
-    calificacion=verificador(resp,respUser,calificacion)
-    resp,respUser=ecuaciones_cuadraticas()
-    calificacion=verificador(resp,respUser,calificacion)"""
-    
-elif opcion==3:
-    sistemas_ecuaciones_1()
-elif opcion==4:
-    resp,respUser=binomio()
-    calificacion=verificador(resp,respUser,calificacion)
-    resp,respUser=binomio()
-    calificacion=verificador(resp,respUser,calificacion)
-elif opcion==5:
-    resp,respUser=fractions()
-    calificacion=verificador(resp,respUser,calificacion)
-    resp,respUser=fractions()
-    calificacion=verificador(resp,respUser,calificacion)
-    resp,respUser=fractions()
-    calificacion=verificador(resp,respUser,calificacion)
-    resp,respUser=fractions()
-    calificacion=verificador(resp,respUser,calificacion)
+def main():
+    calificacion=0
+    opcion=int(input("Hello user, welcome to the algebra test, the objective of this test is evaluate your knowledge on this fundamental topic for engineering.\n Now please select which topic do you want to practice:  \n General test (1) \n First and second degree equations (2) \n Systems of equations (3) \n Development of binomials (4) \n Simplification of algebraic fractions (5) \n Test cases (6) \n:"))
+    if opcion==1:
+        print("General test")
+    elif opcion==2:
+        resp,respUser=ecuaciones_lineales()
+        calificacion=verificador(resp,respUser,calificacion)
+        resp,respUser=ecuaciones_lineales()
+        calificacion=verificador(resp,respUser,calificacion)
+        """resp,respUser=ecuaciones_cuadraticas()
+        calificacion=verificador(resp,respUser,calificacion)
+        resp,respUser=ecuaciones_cuadraticas()
+        calificacion=verificador(resp,respUser,calificacion)"""
+        
+    elif opcion==3:
+        sistemas_ecuaciones_1()
+    elif opcion==4:
+        resp,respUser=binomio()
+        calificacion=verificador(resp,respUser,calificacion)
+        resp,respUser=binomio()
+        calificacion=verificador(resp,respUser,calificacion)
+    elif opcion==5:
+        resp,respUser=fractions()
+        calificacion=verificador(resp,respUser,calificacion)
+        resp,respUser=fractions()
+        calificacion=verificador(resp,respUser,calificacion)
+        resp,respUser=fractions()
+        calificacion=verificador(resp,respUser,calificacion)
+        resp,respUser=fractions()
+        calificacion=verificador(resp,respUser,calificacion)
+    elif opcion==6:
+        tests()
+main()
