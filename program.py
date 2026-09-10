@@ -80,7 +80,6 @@ def ecuaciones_cuadraticas():
     coeficiente1=random.randint(1,10)
     terminoInd=random.randint(-15,15)
     coeficiente2=2*coeficiente1*terminoInd
-    seleccionar=random.randint(1,2)
     print("Given the equation %ix^2 + %ix + %i = 0, x is equal to what? (Round up to 2 decimals)" %(coeficiente1**2,coeficiente2,terminoInd**2))
     answerUser=float(input(":"))
     answerComp=round((0-terminoInd)/coeficiente1,2)
@@ -177,37 +176,51 @@ def fractions():
         userW=int(input("Exponent of variable w: "))
         compW=(coeficienteW1-coeficienteW2)*exponente
         return userW,compW
-def main():
+def factorization():#funcion factorizacion
+    print("Factorizacion")
+    coeficiente1=random.randint(1,10)
+    terminoInd=random.randint(-15,15)
+    coeficiente2=2*coeficiente1*terminoInd
+    seleccionar=random.randint(1,2)
+    print("Given the equation %ix^2 + %ix + %i = 0, x is equal to what? (Round up to 2 decimals)" %(coeficiente1**2,coeficiente2,terminoInd**2))
+    answerUser=float(input(":"))
+def main(): #funcion main
     calificacion=0
-    opcion=int(input("Hello user, welcome to the algebra test, the objective of this test is evaluate your knowledge on this fundamental topic for engineering.\n Now please select which topic do you want to practice:  \n General test (1) \n First and second degree equations (2) \n Systems of equations (3) \n Development of binomials (4) \n Simplification of algebraic fractions (5) \n Test cases (6) \n:"))
-    if opcion==1:
-        print("General test")
-    elif opcion==2:
-        respUser,resp=ecuaciones_lineales()
-        calificacion=verificador(resp,respUser,calificacion)
-        respUser,resp=ecuaciones_lineales()
-        calificacion=verificador(resp,respUser,calificacion)
-        respUser,resp=ecuaciones_cuadraticas()
-        calificacion=verificador(resp,respUser,calificacion)
-        respUser,resp=ecuaciones_cuadraticas()
-        calificacion=verificador(resp,respUser,calificacion)
-        
-    elif opcion==3:
-        sistemas_ecuaciones_1()
-    elif opcion==4:
-        respUser,resp=binomio()
-        calificacion=verificador(resp,respUser,calificacion)
-        respUser,resp=binomio()
-        calificacion=verificador(resp,respUser,calificacion)
-    elif opcion==5:
-        respUser,resp=fractions()
-        calificacion=verificador(resp,respUser,calificacion)
-        respUser,resp=fractions()
-        calificacion=verificador(resp,respUser,calificacion)
-        respUser,resp=fractions()
-        calificacion=verificador(resp,respUser,calificacion)
-        respUser,resp=fractions()
-        calificacion=verificador(resp,respUser,calificacion)
-    elif opcion==6:
-        tests()
+    opcion=int(input("Hello user, welcome to the algebra test, the objective of this test is evaluate your knowledge on this fundamental topic for engineering.\n Now please select which topic do you want to practice:  \n General test (1) \n First and second degree equations (2) \n Systems of equations (3) \n Development of binomials (4) \n Simplification of algebraic fractions (5) \n Factorization of equations (6) \n Test cases (7) \n:"))
+    match opcion:
+        case 1:
+            print("General test")
+        case 2:
+            respUser,resp=ecuaciones_lineales()
+            calificacion=verificador(resp,respUser,calificacion)
+            respUser,resp=ecuaciones_lineales()
+            calificacion=verificador(resp,respUser,calificacion)
+            respUser,resp=ecuaciones_cuadraticas()
+            calificacion=verificador(resp,respUser,calificacion)
+            respUser,resp=ecuaciones_cuadraticas()
+            calificacion=verificador(resp,respUser,calificacion)
+        case 3:
+            sistemas_ecuaciones_1()
+        case 4:
+            respUser,resp=binomio()
+            calificacion=verificador(resp,respUser,calificacion)
+            respUser,resp=binomio()
+            calificacion=verificador(resp,respUser,calificacion)
+        case 5:
+            respUser,resp=fractions()
+            calificacion=verificador(resp,respUser,calificacion)
+            respUser,resp=fractions()
+            calificacion=verificador(resp,respUser,calificacion)
+            respUser,resp=fractions()
+            calificacion=verificador(resp,respUser,calificacion)
+            respUser,resp=fractions()
+            calificacion=verificador(resp,respUser,calificacion)
+        case 6:
+            respUser,resp=factorization()
+            calificacion=verificador(resp,respUser,calificacion)
+        case 7:
+            tests()
+        case _:
+            print("Please insert a valid option")
+            main()
 main()
