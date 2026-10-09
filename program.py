@@ -208,34 +208,56 @@ def main(): #funcion main
         case 1:
             print("General test")
         case 2:
-            respUser,resp=ecuaciones_lineales()
-            calificacion=verificador(resp,respUser,calificacion)
-            respUser,resp=ecuaciones_lineales()
-            calificacion=verificador(resp,respUser,calificacion)
-            respUser,resp=ecuaciones_cuadraticas()
-            calificacion=verificador(resp,respUser,calificacion)
-            respUser,resp=ecuaciones_cuadraticas()
-            calificacion=verificador(resp,respUser,calificacion)
+            preguntas=int(input("How many questions of the topic do you want? "))
+            cambio=1
+            for cont in range (1,preguntas+1):
+                print("Pregunta %i"%(preguntas))
+                if cambio==1:    
+                    respUser,resp=ecuaciones_lineales()
+                    calificacion=verificador(resp,respUser,calificacion)
+                    cambio=2
+                elif cambio==2:
+                    respUser,resp=ecuaciones_cuadraticas()
+                    calificacion=verificador(resp,respUser,calificacion)
+                    cambio=1
         case 3:
-            sistemas_ecuaciones_1()
+            preguntas=int(input("How many questions of the topic do you want? "))
+            cambio=1
+            for cont in range(1,preguntas+1):
+                print("Pregunta %i"%(preguntas))
+                if cambio==1:    
+                    respUser,resp=sistemas_ecuaciones_1()
+                    calificacion=verificador(resp,respUser,calificacion)
+                    cambio=2
+                elif cambio==2:
+                    respUser,resp=sistemas_ecuaciones_2()
+                    calificacion=verificador(resp,respUser,calificacion)
+                    cambio=1
         case 4:
-            respUser,resp=binomio()
-            calificacion=verificador(resp,respUser,calificacion)
-            respUser,resp=binomio()
-            calificacion=verificador(resp,respUser,calificacion)
+            preguntas=int(input("How many questions of the topic do you want? "))
+            for cont in range(1,preguntas+1):
+                print("Pregunta %i"%(preguntas))
+                respUser,resp=binomio()
+                calificacion=verificador(resp,respUser,calificacion)
         case 5:
-            respUser,resp=fractions()
-            calificacion=verificador(resp,respUser,calificacion)
-            respUser,resp=fractions()
-            calificacion=verificador(resp,respUser,calificacion)
-            respUser,resp=fractions()
-            calificacion=verificador(resp,respUser,calificacion)
-            respUser,resp=fractions()
-            calificacion=verificador(resp,respUser,calificacion)
+            preguntas=int(input("How many questions of the topic do you want? "))
+            for cont in range(1,preguntas+1):
+                print("Pregunta %i"%(preguntas))
+                respUser,resp=fractions()
+                calificacion=verificador(resp,respUser,calificacion)
         case 6:
-            respUser,resp=factorization_square()
-            calificacion=verificador(resp,respUser,calificacion)
-            
+            preguntas=int(input("How many questions of the topic do you want? "))
+            cambio=1
+            for cont in range (1,preguntas+1):
+                print("Pregunta %i"%(preguntas))
+                if cambio==1:    
+                    respUser,resp=factorization_square()
+                    calificacion=verificador(resp,respUser,calificacion)
+                    cambio=2
+                elif cambio==2:
+                    respUser,resp=factorization_cube()
+                    calificacion=verificador(resp,respUser,calificacion)
+                    cambio=1
         case 7:
             tests()
         case _:
