@@ -61,3 +61,6 @@ Process:
   12. If yes, then locate the specific material corresponding to the wrong answers
   
   13. If not, end program
+
+
+For the use of the external library integrated into the program (cs50), to install it you have to go to the terminal of your computer, write "pip install cs50" and hit enter, which will automatically download all the requirements for the use of this library. 
