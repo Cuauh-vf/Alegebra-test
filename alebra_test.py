@@ -43,18 +43,20 @@ Process:
 """Here we are going to define the functions used in the main program"""
 import random
 from cs50 import get_float,get_int
-#function for test
+#function for test, solo se imprimen las funciones, ya que como prácticamente todas requieren de input, es dificil hacerlo de tal manera
 def tests():
     mostrador(1,2,0)
     mostrador(4,4,0)
-    mostrador(2,2,5)
-    verificador(1,2,0)
     verificador(4,4,0)
     verificador(2,2,5)
-    #print(ecuaciones_cuadraticas())
-    #print(factorization_square())
-    #print(factorization_cube())
+    print(ecuaciones_cuadraticas())
+    print(factorization_square())
+    print(factorization_cube())
     print(binomio())
+    print(sistemas_ecuaciones_2())
+    print(sistemas_ecuaciones_1())
+    print(ecuaciones_lineales())
+    print(fractions())
 
 #funcion para poder llevar el registro de las preguntas malas
 def almacenarPreguntas(mal,pregunta,u,c):
@@ -187,9 +189,10 @@ def sistemas_ecuaciones_1():
             pregunta.append(linea)
     return answerUser,answerComp,pregunta
 #function for systems of equations with 3 variables
-def sistemas_ecuaciones_2():#hay que revisar el caso cuando aún pueden aparecer sin solucion
+def sistemas_ecuaciones_2():
     print("Sist ec 2")
     sistema=[]
+    posiblesErrores=["No","no","nO"]#por si el user no sabe seguir instrucciones
     escoger=random.randint(1,3)
     for i in range(3):
         ecuacion=[]
@@ -202,74 +205,98 @@ def sistemas_ecuaciones_2():#hay que revisar el caso cuando aún pueden aparecer
     pregunta=displaySistemas2(sistema)
     match escoger:
         case 1:#ver si se puede crear una funcino de esto, ya estoy pensando como hacerlo
-            x1SisNuevo1=sistema[0][0]*sistema[1][2]
-            x2SisNuevo1=sistema[1][0]*(-sistema[0][2])
-            xFSisNuevo1=x1SisNuevo1+x2SisNuevo1
-            y1SisNuevo1=sistema[0][1]*sistema[1][2]
-            y2SisNuevo1=sistema[1][1]*(-sistema[0][2])
-            yFSisNuevo1=y1SisNuevo1+y2SisNuevo1
-            indSisNuevo1=sistema[0][3]*sistema[1][2]+sistema[1][3]*(-sistema[0][2])
-            x1SisNuevo2=sistema[0][0]*sistema[2][2]
-            x2SisNuevo2=sistema[2][0]*(-sistema[0][2])
-            xFSisNuevo2=x1SisNuevo2+x2SisNuevo2
-            y1SisNuevo2=sistema[0][1]*sistema[2][2]
-            y2SisNuevo2=sistema[2][1]*(-sistema[0][2])
-            yFSisNuevo2=y1SisNuevo2+y2SisNuevo2
-            indSisNuevo2=sistema[0][3]*sistema[2][2]+sistema[2][3]*(-sistema[0][2])
-            x1Res=xFSisNuevo1*yFSisNuevo2
-            x2Res=xFSisNuevo2*(-yFSisNuevo1)
-            xFinal=x1Res+x2Res
-            indFinal=indSisNuevo1*yFSisNuevo2+indSisNuevo2*(-yFSisNuevo1)
-            answerComp=round((indFinal/xFinal),2)
-            linea="Give me the value of x, round up to 2 decimals: "
-            answerUser=get_float(linea)
-            pregunta.append(linea)
+            try: 
+                x1SisNuevo1=sistema[0][0]*sistema[1][2]
+                x2SisNuevo1=sistema[1][0]*(-sistema[0][2])
+                xFSisNuevo1=x1SisNuevo1+x2SisNuevo1
+                y1SisNuevo1=sistema[0][1]*sistema[1][2]
+                y2SisNuevo1=sistema[1][1]*(-sistema[0][2])
+                yFSisNuevo1=y1SisNuevo1+y2SisNuevo1
+                indSisNuevo1=sistema[0][3]*sistema[1][2]+sistema[1][3]*(-sistema[0][2])
+                x1SisNuevo2=sistema[0][0]*sistema[2][2]
+                x2SisNuevo2=sistema[2][0]*(-sistema[0][2])
+                xFSisNuevo2=x1SisNuevo2+x2SisNuevo2
+                y1SisNuevo2=sistema[0][1]*sistema[2][2]
+                y2SisNuevo2=sistema[2][1]*(-sistema[0][2])
+                yFSisNuevo2=y1SisNuevo2+y2SisNuevo2
+                indSisNuevo2=sistema[0][3]*sistema[2][2]+sistema[2][3]*(-sistema[0][2])
+                x1Res=xFSisNuevo1*yFSisNuevo2
+                x2Res=xFSisNuevo2*(-yFSisNuevo1)
+                xFinal=x1Res+x2Res
+                indFinal=indSisNuevo1*yFSisNuevo2+indSisNuevo2*(-yFSisNuevo1)
+                answerComp=round((indFinal/xFinal),2)
+                linea="Give me the value of x, round up to 2 decimals, if no solution then 'NO': "
+                answerUser=get_float(linea)
+                pregunta.append(linea)
+            except ZeroDivisionError: 
+                answerComp="NO"
+                linea="Give me the value of x, round up to 2 decimals, if no solution then 'NO': "
+                answerUser=input(linea)
+                if answerUser in posiblesErrores:
+                    answerUser="NO"
+                pregunta.append(linea)
         case 2:
-            x1SisNuevo1=sistema[0][0]*sistema[1][2]
-            x2SisNuevo1=sistema[1][0]*(-sistema[0][2])
-            xFSisNuevo1=x1SisNuevo1+x2SisNuevo1
-            y1SisNuevo1=sistema[0][1]*sistema[1][2]
-            y2SisNuevo1=sistema[1][1]*(-sistema[0][2])
-            yFSisNuevo1=y1SisNuevo1+y2SisNuevo1
-            indSisNuevo1=sistema[0][3]*sistema[1][2]+sistema[1][3]*(-sistema[0][2]) #tal vez hago una funcion para esto, la verdad no se
-            x1SisNuevo2=sistema[0][0]*sistema[2][2]
-            x2SisNuevo2=sistema[2][0]*(-sistema[0][2])
-            xFSisNuevo2=x1SisNuevo2+x2SisNuevo2
-            y1SisNuevo2=sistema[0][1]*sistema[2][2]
-            y2SisNuevo2=sistema[2][1]*(-sistema[0][2])
-            yFSisNuevo2=y1SisNuevo2+y2SisNuevo2
-            indSisNuevo2=sistema[0][3]*sistema[2][2]+sistema[2][3]*(-sistema[0][2])
-            y1Res=yFSisNuevo1*xFSisNuevo2
-            y2Res=yFSisNuevo2*(-xFSisNuevo1)
-            yFinal=y1Res+y2Res
-            indFinal=indSisNuevo1*xFSisNuevo2+indSisNuevo2*(-xFSisNuevo1)
-            answerComp=round((indFinal/yFinal),2)
-            linea="Give me the value of y, round up to 2 decimals: "
-            answerUser=get_float(linea)
-            pregunta.append(linea)
+            try: 
+                x1SisNuevo1=sistema[0][0]*sistema[1][2]
+                x2SisNuevo1=sistema[1][0]*(-sistema[0][2])
+                xFSisNuevo1=x1SisNuevo1+x2SisNuevo1
+                y1SisNuevo1=sistema[0][1]*sistema[1][2]
+                y2SisNuevo1=sistema[1][1]*(-sistema[0][2])
+                yFSisNuevo1=y1SisNuevo1+y2SisNuevo1
+                indSisNuevo1=sistema[0][3]*sistema[1][2]+sistema[1][3]*(-sistema[0][2]) #tal vez hago una funcion para esto, la verdad no se
+                x1SisNuevo2=sistema[0][0]*sistema[2][2]
+                x2SisNuevo2=sistema[2][0]*(-sistema[0][2])
+                xFSisNuevo2=x1SisNuevo2+x2SisNuevo2
+                y1SisNuevo2=sistema[0][1]*sistema[2][2]
+                y2SisNuevo2=sistema[2][1]*(-sistema[0][2])
+                yFSisNuevo2=y1SisNuevo2+y2SisNuevo2
+                indSisNuevo2=sistema[0][3]*sistema[2][2]+sistema[2][3]*(-sistema[0][2])
+                y1Res=yFSisNuevo1*xFSisNuevo2
+                y2Res=yFSisNuevo2*(-xFSisNuevo1)
+                yFinal=y1Res+y2Res
+                indFinal=indSisNuevo1*xFSisNuevo2+indSisNuevo2*(-xFSisNuevo1)
+                answerComp=round((indFinal/yFinal),2)
+                linea="Give me the value of y, round up to 2 decimals, if no solution then 'NO': "
+                answerUser=get_float(linea)
+                pregunta.append(linea)
+            except ZeroDivisionError:
+                answerComp="NO"
+                linea="Give me the value of y, round up to 2 decimals, if no solution then 'NO': "
+                answerUser=input(linea)
+                if answerUser in posiblesErrores:
+                    answerUser="NO"
+                pregunta.append(linea)
         case 3: 
-            z1SisNuevo1=sistema[0][2]*sistema[1][0]
-            z2Sisnuevo1=sistema[1][2]*(-sistema[0][0])
-            zFSisNuevo1=z1SisNuevo1+z2Sisnuevo1
-            y1SisNuevo1=sistema[0][1]*sistema[1][0]
-            y2SisNuevo1=sistema[1][1]*(-sistema[0][0])
-            yFSisNuevo1=y1SisNuevo1+y2SisNuevo1
-            indSisNuevo1=sistema[0][3]*sistema[1][0]+sistema[1][3]*(-sistema[0][0])
-            z1SisNuevo2=sistema[0][2]*sistema[2][0]
-            z2Sisnuevo2=sistema[2][2]*(-sistema[0][0])
-            zFSisNuevo2=z1SisNuevo2+z2Sisnuevo2
-            y1SisNuevo2=sistema[0][1]*sistema[2][0]
-            y2SisNuevo2=sistema[2][1]*(-sistema[0][0])
-            yFSisNuevo2=y1SisNuevo2+y2SisNuevo2
-            indSisNuevo2=sistema[0][3]*sistema[2][0]+sistema[2][3]*(-sistema[0][0])
-            z1Res=zFSisNuevo1*yFSisNuevo2
-            z2Res=zFSisNuevo2*(-yFSisNuevo1)
-            zFinal=z1Res+z2Res
-            indFinal=indSisNuevo1*yFSisNuevo2+indSisNuevo2*(-yFSisNuevo1)
-            answerComp=round((indFinal/zFinal),2)
-            linea="Give me the value of z, round up to 2 decimals: "
-            answerUser=get_float(linea)
-            pregunta.append(linea)
+            try: 
+                z1SisNuevo1=sistema[0][2]*sistema[1][0]
+                z2Sisnuevo1=sistema[1][2]*(-sistema[0][0])
+                zFSisNuevo1=z1SisNuevo1+z2Sisnuevo1
+                y1SisNuevo1=sistema[0][1]*sistema[1][0]
+                y2SisNuevo1=sistema[1][1]*(-sistema[0][0])
+                yFSisNuevo1=y1SisNuevo1+y2SisNuevo1
+                indSisNuevo1=sistema[0][3]*sistema[1][0]+sistema[1][3]*(-sistema[0][0])
+                z1SisNuevo2=sistema[0][2]*sistema[2][0]
+                z2Sisnuevo2=sistema[2][2]*(-sistema[0][0])
+                zFSisNuevo2=z1SisNuevo2+z2Sisnuevo2
+                y1SisNuevo2=sistema[0][1]*sistema[2][0]
+                y2SisNuevo2=sistema[2][1]*(-sistema[0][0])
+                yFSisNuevo2=y1SisNuevo2+y2SisNuevo2
+                indSisNuevo2=sistema[0][3]*sistema[2][0]+sistema[2][3]*(-sistema[0][0])
+                z1Res=zFSisNuevo1*yFSisNuevo2
+                z2Res=zFSisNuevo2*(-yFSisNuevo1)
+                zFinal=z1Res+z2Res
+                indFinal=indSisNuevo1*yFSisNuevo2+indSisNuevo2*(-yFSisNuevo1)
+                answerComp=round((indFinal/zFinal),2)
+                linea="Give me the value of z, round up to 2 decimals, if no solution then 'NO': "
+                answerUser=get_float(linea)
+                pregunta.append(linea)
+            except ZeroDivisionError:
+                answerComp="NO"
+                linea="Give me the value of z, round up to 2 decimals, if no solution then 'NO': "
+                answerUser=input(linea)
+                if answerUser in posiblesErrores:
+                    answerUser="NO"
+                pregunta.append(linea)
     return answerUser,answerComp,pregunta
 #function for development of binomials
 def binomio():
@@ -418,6 +445,25 @@ def factorization_cube():
         pregunta.append(linea)
         answerComp=terminoInd
     return answerUser,answerComp,pregunta
+#funcion para el test general (incluye todos los temas 2 preguntas cada una)
+def generalTest(num):
+    if num==1:
+        respUser,resp,preguntaActual=ecuaciones_lineales()
+    elif num==2:
+        respUser,resp,preguntaActual=ecuaciones_cuadraticas()
+    elif num==3:
+        respUser,resp,preguntaActual=sistemas_ecuaciones_1()
+    elif num==4:
+        respUser,resp,preguntaActual=sistemas_ecuaciones_2()
+    elif num<7 and num>4:
+        respUser,resp,preguntaActual=binomio()
+    elif num>6 and num<9:
+        respUser,resp,preguntaActual=fractions()
+    elif num==9:
+        respUser,resp,preguntaActual=factorization_square()      
+    elif num==10:
+        respUser,resp,preguntaActual=factorization_cube()     
+    return respUser,resp,preguntaActual
 def main(): #funcion main
     calificacion=0
     mal=0#para saber si la pregunta esta mal o no
@@ -427,6 +473,17 @@ def main(): #funcion main
     match opcion:
         case 1:
             print("General test")
+            print("Read the questions carefully and with attention, follow the instructions as presented+")
+            for i in range(1,11):
+                print("Pregunta %i"%(i))
+                respUser,resp,preguntaActual=generalTest(i)
+                calificacion,mal=verificador(resp,respUser,calificacion)
+                almacenarPreguntas(mal,preguntaActual,respUser,resp)
+            mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
+            if mostrarArchivo=="y":
+                mostrarRegistro()
+            else: 
+                print("Ok, bye")
         case 2:
             preguntas=get_int("How many questions of the topic do you want? ")
             cambio=1
