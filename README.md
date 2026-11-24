@@ -64,3 +64,6 @@ Process:
 
 
 For the use of the external library integrated into the program (cs50), to install it you have to go to the terminal of your computer, write "pip install cs50" and hit enter, which will automatically download all the requirements for the use of this library. 
+
+Note: the reason that strings won't be used in this proyecto is because of the nature of it, since most of the otuputs or ptinrting for the user are going to be numbers, there is not much point in the string maniuplation, since it is not a key function, we just need the basics to be able to communicate to the reader. In other words, the proyect is mostly numbers and we only need strings to ask the question. 
+
