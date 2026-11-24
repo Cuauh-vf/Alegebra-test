@@ -66,7 +66,11 @@ def almacenarPreguntas(mal,pregunta,u,c):
             file.write("\n"+"Your answer: "+str(u)+"\n")
             file.write("Right answer: "+str(c)+"\n")
 
-            
+#funcion para mostrar el archivo
+def mostrarRegistro(): 
+    with open("registro.txt") as file:
+        file.seek(0)
+        print(file.read())
 #funcion para mostrar respuesta
 def mostrador(c,u,cal):
     print("The right answer is: ",c)
@@ -113,11 +117,13 @@ def  displaySistemas1(sistema):
         for cont in range(len(i)):
             match cont:
                 case 0: 
-                    x="%ix + "%(i[cont])
+                    x="%ix"%(i[cont])
                     
                 case 1: 
-                    y="%iy = "%(i[cont])
-                    
+                    if i[cont]>-1:
+                        y="+%iy="%(i[cont])
+                    else: 
+                        y="%iy="%(i[cont])                    
                 case 2: 
                     w="%i"%(i[cont])            
         linea=x+y+w+"\n"
@@ -131,11 +137,17 @@ def  displaySistemas2(sistema):
         for cont in range(len(i)):
             match cont:
                 case 0: 
-                    x="%ix + "%(i[cont])
+                    x="%ix"%(i[cont])
                 case 1: 
-                    y="%iy + "%(i[cont])
+                    if i[cont]>-1:#estos son para que cuando haya un valores negativo, no se dupliquen signos
+                        y="+%iy"%(i[cont])
+                    else: 
+                        y="%iy"%(i[cont])
                 case 2: 
-                    z="%iz = "%(i[cont])
+                    if i[cont]>-1:
+                        z="+%iz="%(i[cont])
+                    else: 
+                        z="%iz="%(i[cont])
                 case 3:
                     w="%i"%(i[cont])
         linea=x+y+z+w+"\n"
@@ -431,9 +443,7 @@ def main(): #funcion main
                 almacenarPreguntas(mal,preguntaActual,respUser,resp)
             mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
             if mostrarArchivo=="y":
-                file=open("registro.txt")
-                file.seek(0)
-                print(file.read())
+                mostrarRegistro()
             else: 
                 print("Ok, bye")
         case 3:
@@ -452,9 +462,7 @@ def main(): #funcion main
                 almacenarPreguntas(mal,preguntaActual,respUser,resp)
             mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
             if mostrarArchivo=="y":
-                file=open("registro.txt")
-                file.seek(0)
-                print(file.read())
+                mostrarRegistro()
             else: 
                 print("Ok, bye")
         case 4:
@@ -466,9 +474,7 @@ def main(): #funcion main
                 almacenarPreguntas(mal,preguntaActual,respUser,resp)
             mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
             if mostrarArchivo=="y":
-                file=open("registro.txt")
-                file.seek(0)
-                print(file.read())
+                mostrarRegistro()
             else: 
                 print("Ok, bye")
         case 5:
@@ -480,9 +486,7 @@ def main(): #funcion main
                 almacenarPreguntas(mal,preguntaActual,respUser,resp)
             mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
             if mostrarArchivo=="y":
-                file=open("registro.txt")
-                file.seek(0)
-                print(file.read())
+                mostrarRegistro()
             else: 
                 print("Ok, bye")
         case 6:
@@ -501,9 +505,7 @@ def main(): #funcion main
                 almacenarPreguntas(mal,preguntaActual,respUser,resp)
             mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
             if mostrarArchivo=="y":
-                file=open("registro.txt")
-                file.seek(0)
-                print(file.read())
+                mostrarRegistro()
             else: 
                 print("Ok, bye")
         case 7:
