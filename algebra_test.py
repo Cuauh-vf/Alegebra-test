@@ -303,64 +303,64 @@ def binomio():
     pregunta.append(linea+"\n")
     if exponente==2: #estos ifs son para calcular los coeficientes del binomio presentado, si no se tendrían que calular más cosas
         if seleccionador==1 or seleccionador==4:#esto es para solo preguntar por 1 respuesta al usuario, habilitando el uso de la función verificador, por ejemplo esto es para el coeficiente del primer termino
-            linea="Give me the coeficient for the first term: "
+            linea="Given the past binomial, expand and give me the coeficient for the first term: "
             answerU=get_int(linea)
             pregunta.append(linea)
             answerC=coeficiente**exponente
         elif seleccionador==2 or seleccionador==5:#segundo 
-            linea="Give me the coeficient for the second term: "
+            linea="Given the past binomial, expand and give me the coeficient for the second term: "
             answerU=get_int(linea)
             pregunta.append(linea)
             answerC=2*coeficiente*terminoI
         elif seleccionador==3:#tercero
-            linea="Give me the coeficient for the third term: "
+            linea="Given the past binomial, expand and give me the coeficient for the third term: "
             answerU=get_int(linea)
             pregunta.append(linea)
             answerC=terminoI**exponente
     if exponente==3:#si el exponente es 3
         if seleccionador==1 or seleccionador==5:#primer termino
-            linea="Give me the coeficient for the first term: "
+            linea="Given the past binomial, expand and give me the coeficient for the first term: "
             answerU=get_int(linea)
             pregunta.append(linea)
             answerC=coeficiente**exponente
         elif seleccionador==2:#segundo
-            linea="Give me the coeficient for the second term: "
+            linea="Given the past binomial, expand and give me the coeficient for the second term: "
             answerU=get_int(linea)
             pregunta.append(linea)
             answerC=3*(coeficiente**2)*terminoI
         elif seleccionador==3:#tercero
-            linea="Give me the coeficient for the third term: "
+            linea="Given the past binomial, expand and give me the coeficient for the third term: "
             answerU=get_int(linea)
             pregunta.append(linea)
             answerC=3*coeficiente*(terminoI**2)
         elif seleccionador==4:#cuarto
-            linea="Give me the coeficient for the fourth term: "
+            linea="Given the past binomial, expand and give me the coeficient for the fourth term: "
             answerU=get_int(linea)
             pregunta.append(linea)
             answerC=terminoI**exponente
     if exponente==4:
         if seleccionador==1:
-            linea="Give me the coeficient for the first term: "
+            linea="Given the past binomial, expand and give me the coeficient for the first term: "
             answerU=get_int(linea)
             pregunta.append(linea)
             answerC=coeficiente**exponente
         elif seleccionador==2:
-            linea="Give me the coeficient for the second term: "
+            linea="Given the past binomial, expand and give me the coeficient for the second term: "
             answerU=get_int(linea)
             pregunta.append(linea)
             answerC=4*(coeficiente**3)*terminoI
         elif seleccionador==3:
-            linea="Give me the coeficient for the third term: "
+            linea="Given the past binomial, expand and give me the coeficient for the third term: "
             answerU=get_int(linea)
             pregunta.append(linea)
             answerC=6*(coeficiente**2)*(terminoI**2)
         elif seleccionador==4:
-            linea="Give me the coeficient for the fourth term: "
+            linea="Given the past binomial, expand and give me the coeficient for the fourth term: "
             answerU=get_int(linea)
             pregunta.append(linea)
             answerC=4*coeficiente*(terminoI**3)
         elif seleccionador==5:
-            linea="Give me the coeficient for the fifth term: "
+            linea="Given the past binomial, expand and give me the coeficient for the fifth term: "
             answerU=get_int(linea)
             pregunta.append(linea)
             answerC=terminoI**exponente
