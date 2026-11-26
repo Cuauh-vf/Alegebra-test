@@ -59,6 +59,9 @@ def tests():
     print(sistemas_ecuaciones_1())
     print(ecuaciones_lineales())
     print(fractions())
+    displaySistemas1([[1,2,3],[4,5,6]])
+    displaySistemas2([[1,2,3,4],[5,6,7,8],[9,10,11,12]])
+    mostrarRegistro()
 
 #function to keep track of the wrong answers
 def almacenarPreguntas(mal,pregunta,u,c):
