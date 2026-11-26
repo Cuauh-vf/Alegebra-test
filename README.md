@@ -6,7 +6,7 @@ In this context, the most important basis for engineering is algebra, since this
 
 This test is designed to evaluate the users knowledge on different topics of algebra. At the beginning of the program, the user is asked if they want to make a general test, having only a few questions per topic, or do a deep dive in a specific topic. The topics included are first and second degree equations, systems of equations of 2 and 3 variables, development of binomials, factorization of equations and simplification of algebraic fractions. 
 
-At the end of the test, the user is asked if they want to consult a didactic resource to reinforce their knowledge based on the questions that they got wrong, and the program should throw them the material in accordance to the mistakes made. 
+At the end of the test, the user is asked if they want to consult the questions that they got wrong, and if they do, then a file is given that has the question, the user answer and the computer answer for the problem. 
 
 (I still need to look for and research which didactic materials I'm going to use for the feedback, but it is probably going to be some book form TEC's digital library or open source)
 
