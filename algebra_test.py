@@ -28,15 +28,17 @@ Process:
 
 8. Show the user if it got the question right or wrong
 
-9. Repeat this process until all the questions asigned are showed and answered
+9. If it was wrong, save the questin and answers in a file
 
-10. Show the final grade of the user
+10. Repeat this process until all the questions asigned are showed and answered
 
-11. Ask if they want a register of their wrong answers
+11. Show the final grade of the user
 
-12. If yes, then show the respective questions and answers
+12. Ask if they want a register of their wrong answers
 
-13. If not, end program
+13. If yes, then show the respective questions and answers
+
+14. If not, end program
 """
 
 
