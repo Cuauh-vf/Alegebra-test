@@ -36,7 +36,7 @@ Process:
 
   1. Analyze the topic wanted for the test
   
-  2. Based on the answer, determine which questions to throw the user
+  2. Based on the answer, determine which and how many questions to throw the user
   
   3. Import random values for the coeficients of equiations, in the case of algebraic fractions also randomize the values for exponents of variables
   
