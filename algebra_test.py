@@ -461,114 +461,165 @@ def generalTest(num):
     return respUser,resp,preguntaActual
 #function main
 def main(): 
-    calificacion=0#to keep the grade 
-    mal=0##to know if it is wrong or right
-    with open("registro.txt","w") as file:#creates a file for the answers
-        file.write("")#just creates the file, dont write
-    opcion=get_int("Hello user, welcome to the algebra test, the objective of this test is evaluate your knowledge on this fundamental topic for engineering.\n Now please select which topic do you want to practice:  \n General test (1) \n First and second degree equations (2) \n Systems of equations (3) \n Development of binomials (4) \n Simplification of algebraic fractions (5) \n Factorization of equations (6) \n Test cases (7) \n:")
-    match opcion:#select which topic to study
-        case 1:
-            print("Read the questions carefully and with attention, follow the instructions as presented")
-            for i in range(1,11):#keep track of the question number
-                print("Question %i"%(i))
-                respUser,resp,preguntaActual=generalTest(i)#saves current question and answers
-                calificacion,mal=verificador(resp,respUser,calificacion)#saves grade and if it is right or wrong
-                almacenarPreguntas(mal,preguntaActual,respUser,resp)#saves the question if it is wrong
-            mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")#asks if it wants to show the file
-            if mostrarArchivo=="y":
-                mostrarRegistro()#shows file
-            else: 
-                print("Ok, bye and keep the good work!")
-        case 2:
-            preguntas=get_int("How many questions of the topic do you want? ")#makes sure dont introduce nonsense values
-            cambio=1#to alternate between one or another, since several topics divided in different functions
-            print("Read the questions carefully and with attention, follow the instructions as presented")
-            for cont in range (1,preguntas+1):
-                print("Question %i"%(cont))
-                if cambio==1:    
-                    respUser,resp,preguntaActual=ecuaciones_lineales()
+    repeat=True
+    possibleErrorsYes=["Y","yes","YES","YEs","YeS"]#in case the user doesnt follow instructions
+    while repeat:
+        calificacion=0#to keep the grade 
+        mal=0##to know if it is wrong or right
+        with open("registro.txt","w") as file:#creates a file for the answers
+            file.write("")#just creates the file, dont write
+        opcion=get_int("Hello user, welcome to the algebra test, the objective of this test is evaluate your knowledge on this fundamental topic for engineering.\n Now please select which topic do you want to practice:  \n General test (1) \n First and second degree equations (2) \n Systems of equations (3) \n Development of binomials (4) \n Simplification of algebraic fractions (5) \n Factorization of equations (6) \n Test cases (7) \n:")
+        match opcion:#select which topic to study
+            case 1:
+                print("Read the questions carefully and with attention, follow the instructions as presented")
+                for i in range(1,11):#keep track of the question number
+                    print("Question %i"%(i))
+                    respUser,resp,preguntaActual=generalTest(i)#saves current question and answers
+                    calificacion,mal=verificador(resp,respUser,calificacion)#saves grade and if it is right or wrong
+                    almacenarPreguntas(mal,preguntaActual,respUser,resp)#saves the question if it is wrong
+                mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")#asks if it wants to show the file
+                if mostrarArchivo=="y":
+                    mostrarRegistro()#shows file
+                else: 
+                    print("Ok")
+                repeat=input("Wanna go again? (y/n)")#ask if it wants another test
+                if repeat in possibleErrorsYes:#to ensure that even if the user messes up, keep going
+                    repeat="y"
+                if repeat=="y":
+                    repeat=True
+                else: 
+                    repeat=False
+                    print("Ok, have a good one!")
+            case 2:
+                preguntas=get_int("How many questions of the topic do you want? ")#makes sure dont introduce nonsense values
+                cambio=1#to alternate between one or another, since several topics divided in different functions
+                print("Read the questions carefully and with attention, follow the instructions as presented")
+                for cont in range (1,preguntas+1):
+                    print("Question %i"%(cont))
+                    if cambio==1:    
+                        respUser,resp,preguntaActual=ecuaciones_lineales()
+                        calificacion,mal=verificador(resp,respUser,calificacion)
+                        cambio=2
+                    elif cambio==2:
+                        respUser,resp,preguntaActual=ecuaciones_cuadraticas()
+                        calificacion,mal=verificador(resp,respUser,calificacion)
+                        cambio=1
+                    almacenarPreguntas(mal,preguntaActual,respUser,resp)
+                mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
+                if mostrarArchivo=="y":
+                    mostrarRegistro()
+                else: 
+                    print("Ok")
+                repeat=input("Wanna go again? (y/n)")
+                if repeat in possibleErrorsYes:#to ensure that even if the user messes up, keep going
+                    repeat="y"
+                if repeat=="y":
+                    repeat=True
+                else: 
+                    repeat=False
+                    print("Ok, have a good one!")
+            case 3:
+                preguntas=get_int("How many questions of the topic do you want? ")
+                cambio=1
+                print("Read the questions carefully and with attention, follow the instructions as presented")
+                for cont in range(1,preguntas+1):
+                    print("Question %i"%(cont))
+                    if cambio==1:    
+                        respUser,resp,preguntaActual=sistemas_ecuaciones_1()
+                        calificacion,mal=verificador(resp,respUser,calificacion)
+                        cambio=2
+                    elif cambio==2:
+                        respUser,resp,preguntaActual=sistemas_ecuaciones_2()
+                        calificacion,mal=verificador(resp,respUser,calificacion)
+                        cambio=1
+                    almacenarPreguntas(mal,preguntaActual,respUser,resp)
+                mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
+                if mostrarArchivo=="y":
+                    mostrarRegistro()
+                else: 
+                    print("Ok")
+                repeat=input("Wanna go again? (y/n)")
+                if repeat in possibleErrorsYes:#to ensure that even if the user messes up, keep going
+                    repeat="y"
+                if repeat=="y":
+                    repeat=True
+                else: 
+                    repeat=False
+                    print("Ok, have a good one!")
+            case 4:
+                preguntas=get_int("How many questions of the topic do you want? ")
+                print("Read the questions carefully and with attention, follow the instructions as presented")
+                for cont in range(1,preguntas+1):
+                    print("Question %i"%(cont))
+                    respUser,resp,preguntaActual=binomio()
                     calificacion,mal=verificador(resp,respUser,calificacion)
-                    cambio=2
-                elif cambio==2:
-                    respUser,resp,preguntaActual=ecuaciones_cuadraticas()
+                    almacenarPreguntas(mal,preguntaActual,respUser,resp)
+                mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
+                if mostrarArchivo=="y":
+                    mostrarRegistro()
+                else: 
+                    print("Ok")
+                repeat=input("Wanna go again? (y/n)")
+                if repeat in possibleErrorsYes:#to ensure that even if the user messes up, keep going
+                    repeat="y"
+                if repeat=="y":
+                    repeat=True
+                else: 
+                    repeat=False
+                    print("Ok, have a good one!")
+            case 5:
+                preguntas=get_int("How many questions of the topic do you want? ")
+                print("Read the questions carefully and with attention, follow the instructions as presented")
+                for cont in range(1,preguntas+1):
+                    print("Question %i"%(cont))
+                    respUser,resp,preguntaActual=fractions()
                     calificacion,mal=verificador(resp,respUser,calificacion)
-                    cambio=1
-                almacenarPreguntas(mal,preguntaActual,respUser,resp)
-            mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
-            if mostrarArchivo=="y":
-                mostrarRegistro()
-            else: 
-                print("Ok, bye and keep the good work!")
-        case 3:
-            preguntas=get_int("How many questions of the topic do you want? ")
-            cambio=1
-            print("Read the questions carefully and with attention, follow the instructions as presented")
-            for cont in range(1,preguntas+1):
-                print("Question %i"%(cont))
-                if cambio==1:    
-                    respUser,resp,preguntaActual=sistemas_ecuaciones_1()
-                    calificacion,mal=verificador(resp,respUser,calificacion)
-                    cambio=2
-                elif cambio==2:
-                    respUser,resp,preguntaActual=sistemas_ecuaciones_2()
-                    calificacion,mal=verificador(resp,respUser,calificacion)
-                    cambio=1
-                almacenarPreguntas(mal,preguntaActual,respUser,resp)
-            mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
-            if mostrarArchivo=="y":
-                mostrarRegistro()
-            else: 
-                print("Ok, bye and keep the good work!")
-        case 4:
-            preguntas=get_int("How many questions of the topic do you want? ")
-            print("Read the questions carefully and with attention, follow the instructions as presented")
-            for cont in range(1,preguntas+1):
-                print("Question %i"%(cont))
-                respUser,resp,preguntaActual=binomio()
-                calificacion,mal=verificador(resp,respUser,calificacion)
-                almacenarPreguntas(mal,preguntaActual,respUser,resp)
-            mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
-            if mostrarArchivo=="y":
-                mostrarRegistro()
-            else: 
-                print("Ok, bye and keep the good work!")
-        case 5:
-            preguntas=get_int("How many questions of the topic do you want? ")
-            print("Read the questions carefully and with attention, follow the instructions as presented")
-            for cont in range(1,preguntas+1):
-                print("Question %i"%(cont))
-                respUser,resp,preguntaActual=fractions()
-                calificacion,mal=verificador(resp,respUser,calificacion)
-                almacenarPreguntas(mal,preguntaActual,respUser,resp)
-            mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
-            if mostrarArchivo=="y":
-                mostrarRegistro()
-            else: 
-                print("Ok, bye and keep the good work!")
-        case 6:
-            preguntas=get_int("How many questions of the topic do you want? ")
-            cambio=1
-            print("Read the questions carefully and with attention, follow the instructions as presented")
-            for cont in range (1,preguntas+1):
-                print("Question %i"%(cont))
-                if cambio==1:    
-                    respUser,resp,preguntaActual=factorization_square()
-                    calificacion,mal=verificador(resp,respUser,calificacion)
-                    cambio=2
-                elif cambio==2:
-                    respUser,resp,preguntaActual=factorization_cube()
-                    calificacion,mal=verificador(resp,respUser,calificacion)
-                    cambio=1
-                almacenarPreguntas(mal,preguntaActual,respUser,resp)
-            mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
-            if mostrarArchivo=="y":
-                mostrarRegistro()
-            else: 
-                print("Ok, bye and keep the good work!")
-        case 7:#if you want to check the test cases, which are pretty mid
-            tests()
-        case _:#if the user inserts an unvalid option, starts the whole thing over
-            print("Please insert a valid option")
-            main()#calls main again, starting over
-"""Here we execute the whole program"""
+                    almacenarPreguntas(mal,preguntaActual,respUser,resp)
+                mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
+                if mostrarArchivo=="y":
+                    mostrarRegistro()
+                else: 
+                    print("Ok")
+                repeat=input("Wanna go again? (y/n)")
+                if repeat in possibleErrorsYes:#to ensure that even if the user messes up, keep going
+                    repeat="y"
+                if repeat=="y":
+                    repeat=True
+                else: 
+                    repeat=False
+                    print("Ok, have a good one!")
+            case 6:
+                preguntas=get_int("How many questions of the topic do you want? ")
+                cambio=1
+                print("Read the questions carefully and with attention, follow the instructions as presented")
+                for cont in range (1,preguntas+1):
+                    print("Question %i"%(cont))
+                    if cambio==1:    
+                        respUser,resp,preguntaActual=factorization_square()
+                        calificacion,mal=verificador(resp,respUser,calificacion)
+                        cambio=2
+                    elif cambio==2:
+                        respUser,resp,preguntaActual=factorization_cube()
+                        calificacion,mal=verificador(resp,respUser,calificacion)
+                        cambio=1
+                    almacenarPreguntas(mal,preguntaActual,respUser,resp)
+                mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
+                if mostrarArchivo=="y":
+                    mostrarRegistro()
+                else: 
+                    print("Ok")
+                repeat=input("Wanna go again? (y/n)")
+                if repeat in possibleErrorsYes:#to ensure that even if the user messes up, keep going
+                    repeat="y"
+                if repeat=="y":
+                    repeat=True
+                else: 
+                    repeat=False
+                    print("Ok, have a good one!")
+            case 7:#if you want to check the test cases, which are pretty mid
+                tests()
+            case _:#if the user inserts an unvalid option, starts the whole thing over
+                print("Please insert a valid option")
+                main()#calls main again, starting over
+                """Here we run the program itself""""
 main()#calls for main and executes all of the program
