@@ -2,14 +2,14 @@
 Inputs:
 -Topic for the test 
 -Answers given by the user trhoughout the test
--If they want didactic resources
+-If they want the question they got wrong
 
 Outputs: 
 -Right or worng 
 -Calculated answer
 -Corresponding questions
 -Final result
--Corresponding didactic material
+-File with wrong questions
 
 Process: 
 1. Analyze the topic wanted for the test
@@ -32,9 +32,9 @@ Process:
 
 10. Show the final grade of the user
 
-11. Ask if they want didactic material to reinforce
+11. Ask if they want a register of their wrong answers
 
-12. If yes, then locate the specific material corresponding to the wrong answers
+12. If yes, then show the respective questions and answers
 
 13. If not, end program
 """
@@ -200,20 +200,20 @@ def sistemas_ecuaciones_2():
         case 1:#para preguntar por las diferentes variables (x,y,z)
             try: #los try son para que si hay un sistema sin solución, que no se rompa el programa al intentar dividir entre cero y que sea otra respuesta
                 x1SisNuevo1=sistema[0][0]*sistema[1][2]
-                x2SisNuevo1=sistema[1][0]*(-sistema[0][2])
-                xFSisNuevo1=x1SisNuevo1+x2SisNuevo1
+                x2SisNuevo1=sistema[1][0]*(-sistema[0][2])#para resolver el sistema de ecuaciones, se hace por eliminacion
+                xFSisNuevo1=x1SisNuevo1+x2SisNuevo1#primero se hace como si fuera un sistema de 2 x 2, utilizando dos ecuaciones y cancelando una variable
                 y1SisNuevo1=sistema[0][1]*sistema[1][2]
                 y2SisNuevo1=sistema[1][1]*(-sistema[0][2])
                 yFSisNuevo1=y1SisNuevo1+y2SisNuevo1
-                indSisNuevo1=sistema[0][3]*sistema[1][2]+sistema[1][3]*(-sistema[0][2])
-                x1SisNuevo2=sistema[0][0]*sistema[2][2]
+                indSisNuevo1=sistema[0][3]*sistema[1][2]+sistema[1][3]*(-sistema[0][2])#aqui sale la primera ecuacion cancelando z
+                x1SisNuevo2=sistema[0][0]*sistema[2][2]#hacemos lo mismo pero con la ecuacion que no utilizamos y otra que sí
                 x2SisNuevo2=sistema[2][0]*(-sistema[0][2])
                 xFSisNuevo2=x1SisNuevo2+x2SisNuevo2
                 y1SisNuevo2=sistema[0][1]*sistema[2][2]
                 y2SisNuevo2=sistema[2][1]*(-sistema[0][2])
                 yFSisNuevo2=y1SisNuevo2+y2SisNuevo2
-                indSisNuevo2=sistema[0][3]*sistema[2][2]+sistema[2][3]*(-sistema[0][2])
-                x1Res=xFSisNuevo1*yFSisNuevo2
+                indSisNuevo2=sistema[0][3]*sistema[2][2]+sistema[2][3]*(-sistema[0][2])#aqui sale la segunda ecuacion sin z
+                x1Res=xFSisNuevo1*yFSisNuevo2#ahora si, tenemos un sistema con 2 variables, hacemos como antes
                 x2Res=xFSisNuevo2*(-yFSisNuevo1)
                 xFinal=x1Res+x2Res
                 indFinal=indSisNuevo1*yFSisNuevo2+indSisNuevo2*(-yFSisNuevo1)
@@ -369,34 +369,34 @@ def binomio():
 #function for algebraic fractions
 def fractions():
     pregunta=[]
-    coeficienteA1=random.randint(-12,11)#se me fue el avión y en vez de poner exponente puse coeficiente, 
-    coeficienteA2=random.randint(-12,11)
-    coeficienteZ1=random.randint(-12,11)
-    coeficienteZ2=random.randint(-12,11)
-    coeficienteW1=random.randint(-12,11)
-    coeficienteW2=random.randint(-12,11)
-    exponente=random.randint(1,3)#este es el exponente exterior, el que abarca a toda la fracción
+    exponenteA1=random.randint(-12,11)#se me fue el avión y en vez de poner exponente puse coeficiente, 
+    exponenteA2=random.randint(-12,11)
+    exponenteZ1=random.randint(-12,11)
+    exponenteZ2=random.randint(-12,11)
+    exponenteW1=random.randint(-12,11)
+    exponenteW2=random.randint(-12,11)
+    exponenteFraccion=random.randint(1,3)#este es el exponenteFraccion exterior, el que abarca a toda la fracción
     seleccionar=random.randint(1,3)#esta variable es para simplificar la funcion, si no hiciera esto, la funcion arrogaría 6 resultados
-    linea="((a^%i * z^%i * w^%i)/(a^%i * z^%i * w^%i))^%i" %(coeficienteA1,coeficienteZ1,coeficienteW1,coeficienteA2,coeficienteZ2,coeficienteW2,exponente)
+    linea="((a^%i * z^%i * w^%i)/(a^%i * z^%i * w^%i))^%i" %(exponenteA1,exponenteZ1,exponenteW1,exponenteA2,exponenteZ2,exponenteW2,exponenteFraccion)
     print(linea)
     pregunta.append(linea+"\n")
     if seleccionar==1:#aleatorizar cuál variable vamos a "resolver" para poder utilizar la funcion de verificador 
         linea="What is the exponent of variable a: "
         userA=get_int(linea)
         pregunta.append(linea)
-        compA=(coeficienteA1-coeficienteA2)*exponente
+        compA=(exponenteA1-exponenteA2)*exponenteFraccion
         return userA,compA,pregunta
-    elif seleccionar==2:#preguntar por exponente/coeficiente de z
+    elif seleccionar==2:#preguntar por exponenteFraccion/coeficiente de z
         linea="What is the exponent of variable z: "
         userZ=get_int(linea)
         pregunta.append(linea)
-        compZ=(coeficienteZ1-coeficienteZ2)*exponente
+        compZ=(exponenteZ1-exponenteZ2)*exponenteFraccion
         return userZ,compZ,pregunta
-    elif seleccionar==3:#preguntar por exponente/coeficiente de w
+    elif seleccionar==3:#preguntar por exponenteFraccion/coeficiente de w
         linea="What is the exponent of variable w: "
         userW=get_int(linea)
         pregunta.append(linea)
-        compW=(coeficienteW1-coeficienteW2)*exponente
+        compW=(exponenteW1-exponenteW2)*exponenteFraccion
         return userW,compW,pregunta
 #funcion factorizacion
 def factorization_square():
@@ -464,7 +464,7 @@ def main(): #funcion main
         case 1:
             print("Read the questions carefully and with attention, follow the instructions as presented")
             for i in range(1,11):#para que lleve la cuenta de cuál pregunta es 
-                print("Pregunta %i"%(i))
+                print("Question %i"%(i))
                 respUser,resp,preguntaActual=generalTest(i)#almacena la pregunta actual y las respuestas
                 calificacion,mal=verificador(resp,respUser,calificacion)#almacena la calificacion del usuario y si es que esta mal
                 almacenarPreguntas(mal,preguntaActual,respUser,resp)#almacena la pregunta si es que esta mal
@@ -478,7 +478,7 @@ def main(): #funcion main
             cambio=1#para que alterne entre una u otra, ya que varios temas estan divididos en diferentes funciones
             print("Read the questions carefully and with attention, follow the instructions as presented")
             for cont in range (1,preguntas+1):
-                print("Pregunta %i"%(cont))
+                print("Question %i"%(cont))
                 if cambio==1:    
                     respUser,resp,preguntaActual=ecuaciones_lineales()
                     calificacion,mal=verificador(resp,respUser,calificacion)
@@ -498,7 +498,7 @@ def main(): #funcion main
             cambio=1
             print("Read the questions carefully and with attention, follow the instructions as presented")
             for cont in range(1,preguntas+1):
-                print("Pregunta %i"%(cont))
+                print("Question %i"%(cont))
                 if cambio==1:    
                     respUser,resp,preguntaActual=sistemas_ecuaciones_1()
                     calificacion,mal=verificador(resp,respUser,calificacion)
@@ -517,7 +517,7 @@ def main(): #funcion main
             preguntas=get_int("How many questions of the topic do you want? ")
             print("Read the questions carefully and with attention, follow the instructions as presented")
             for cont in range(1,preguntas+1):
-                print("Pregunta %i"%(cont))
+                print("Question %i"%(cont))
                 respUser,resp,preguntaActual=binomio()
                 calificacion,mal=verificador(resp,respUser,calificacion)
                 almacenarPreguntas(mal,preguntaActual,respUser,resp)
@@ -530,7 +530,7 @@ def main(): #funcion main
             preguntas=get_int("How many questions of the topic do you want? ")
             print("Read the questions carefully and with attention, follow the instructions as presented")
             for cont in range(1,preguntas+1):
-                print("Pregunta %i"%(cont))
+                print("Question %i"%(cont))
                 respUser,resp,preguntaActual=fractions()
                 calificacion,mal=verificador(resp,respUser,calificacion)
                 almacenarPreguntas(mal,preguntaActual,respUser,resp)
@@ -544,7 +544,7 @@ def main(): #funcion main
             cambio=1
             print("Read the questions carefully and with attention, follow the instructions as presented")
             for cont in range (1,preguntas+1):
-                print("Pregunta %i"%(cont))
+                print("Question %i"%(cont))
                 if cambio==1:    
                     respUser,resp,preguntaActual=factorization_square()
                     calificacion,mal=verificador(resp,respUser,calificacion)
@@ -564,4 +564,5 @@ def main(): #funcion main
         case _:#si es que llega a poner una opcion que no existe, que repita todo (en verdad esperaria que el usuario supiera leer)
             print("Please insert a valid option")
             main()#llama de nuevo a main y empieza de nuevo
+"""Here we call the main function containing the full program"""            
 main()#llama a main y ejecuta todo el código
