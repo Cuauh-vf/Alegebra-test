@@ -18,7 +18,7 @@ Inputs:
 
   -The answers given by the user throughout the test
   
-  -If they want file with worng answers
+  -If they want file with wrong answers
   
 Outputs: 
 
@@ -30,7 +30,7 @@ Outputs:
   
   -Final results
   
-  -Corresponding didactic material 
+  -Corresponding wrong answers and questions
   
 Process:
 
