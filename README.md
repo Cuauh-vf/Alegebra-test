@@ -8,8 +8,6 @@ This test is designed to evaluate the users knowledge on different topics of alg
 
 At the end of the test, the user is asked if they want to consult the questions that they got wrong, and if they do, then a file is given that has the question, the user answer and the computer answer for the problem. 
 
-(I still need to look for and research which didactic materials I'm going to use for the feedback, but it is probably going to be some book form TEC's digital library or open source)
-
 (The matrices are going to be implemented in the calculation of the results of systems of equations, and the files are going to be involved in the didactic material)
 
 # Instructions # 
@@ -20,7 +18,7 @@ Inputs:
 
   -The answers given by the user throughout the test
   
-  -If they want didactic resources
+  -If they want file with worng answers
   
 Outputs: 
 
@@ -56,9 +54,9 @@ Process:
   
   10. Show the final grade of the user
   
-  11. Ask if they want didactic material to reinforce
+  11. Ask if they want register of wrong answers
   
-  12. If yes, then locate the specific material corresponding to the wrong answers
+  12. If yes, then show the file with the question, answer by the user and computer answer
   
   13. If not, end program
 
