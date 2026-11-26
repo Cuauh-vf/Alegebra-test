@@ -49,16 +49,18 @@ Process:
   7. Calculate the result 
   
   8. Show the user if it got the question right or wrong
+
+  9. If it was wrong, save the question in a file
   
-  9. Repeat this process until all the questions asigned are showed and answered
+  10. Repeat this process until all the questions asigned are showed and answered
   
-  10. Show the final grade of the user
+  11. Show the final grade of the user
   
-  11. Ask if they want register of wrong answers
+  12. Ask if they want register of wrong answers
   
-  12. If yes, then show the file with the question, answer by the user and computer answer
+  13. If yes, then show the file with the question, answer by the user and computer answer
   
-  13. If not, end program
+  14. If not, end program
 
 
 For the use of the external library integrated into the program (cs50), to install it you have to go to the terminal of your computer, write "pip install cs50" and hit enter, which will automatically download all the requirements for the use of this library. 
