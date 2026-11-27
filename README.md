@@ -19,6 +19,8 @@ Inputs:
   -The answers given by the user throughout the test
   
   -If they want file with wrong answers
+
+  -If they want to keep doing tests
   
 Outputs: 
 
@@ -48,7 +50,7 @@ Process:
   
   7. Calculate the result 
   
-  8. Show the user if it got the question right or wrong
+  8. Show the user if it got the question right or wrong and grade
 
   9. If it was wrong, save the question in a file
   
