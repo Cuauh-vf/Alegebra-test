@@ -1,4 +1,5 @@
 """
+Code in general: 
 Inputs:
 -Topic for the test 
 -Answers given by the user trhoughout the test
@@ -40,7 +41,33 @@ Process:
 
 14. If not, end program
 """
-
+"""
+Algorithm for system of equations of 2 variables
+Inputs: 
+--Answer by the user
+Outputs: 
+--Question printed
+--Question saved as value
+--Right answer as value
+--User answer as value
+Process:
+1. Create an empty list to save the equations
+2. Import a random value between 1-2 to decide whether to ask for x or y
+3. With nested for loops create a matrix, which will make as the coefficients of the equation, with random values between -10 and 15
+4. If the coefficient of the variable y is equal to 0 in the first equation, make the second y equal to a random value between 1-8
+5. We save the system in the question variable and display the system
+6. Evalueat if asking for x or y (im going to do the process as if it was x). We are doing elimination process
+7. Multiply the coefficient of the first x times the value of the second y
+8. Multiply the second x times the negtive of the value of the first y (we cancel the y's)
+9. Add the values of both x's obtained, this is the final x of a linear equation
+10. Multiply the first independent term times the second y and add to it the product of the second independent term times the negative of the first y, this is the final independent term
+11. Clear the x by dividing the final independent term by the coefficient of the final x
+12. Round to 2 decimals 
+13. Create the line asking for the value of x to the user
+14. ask the user for the value fo x with the function get_float of cs50, ensuring to get a float from the user and no errors with string and symbols
+15. add the line to the question variable 
+16. return the user answer, the computer answer and the whole question (system and asking for the value of x)
+"""
 
 """Here we are going to define the functions used in the main program"""
 import random
