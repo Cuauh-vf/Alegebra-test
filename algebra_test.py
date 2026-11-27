@@ -129,7 +129,7 @@ def ecuaciones_lineales():
     linea="Given the equation %ix + %i = %i, x is equal to what? (Give the answer with 2 decimals rounding up)\n: " %(coeficiente,terminoInd,terminoInd2)#save in a variable so its eaisier to save it in the question bank
     pregunta.append(linea)#add the queestion to the bank
     answerUser=get_float(linea)#use of cs50 so it caan only give floats and no strins break the code
-    answerComp=round((terminoInd2-terminoInd)/coeficiente,2)#calculate answer
+    answerComp=round((terminoInd2-terminoInd)/coeficiente,2)#calculate answer, clearing x
     return answerUser,answerComp,pregunta
 #function for second degree functions
 def ecuaciones_cuadraticas():
@@ -140,7 +140,7 @@ def ecuaciones_cuadraticas():
     linea="Given the equation %ix^2 + %ix + %i = 0, x is equal to what? (Round up to 2 decimals)\n: " %(coeficiente1**2,coeficiente2,terminoInd**2)
     pregunta.append(linea)
     answerUser=get_float(linea)
-    answerComp=round((0-terminoInd)/coeficiente1,2)
+    answerComp=round((0-terminoInd)/coeficiente1,2)#we clear as normal to solve, since its a perfect squared binomial, we can coeffx+ind=0
     return answerUser,answerComp,pregunta
 #function for the display of system of ecuations of 2 variables
 def  displaySistemas1(sistema):
@@ -343,7 +343,7 @@ def binomio():
             linea="Given the past binomial, expand and give me the coeficient for the second term: "
             answerU=get_int(linea)
             pregunta.append(linea)
-            answerC=2*coeficiente*terminoI
+            answerC=2*coeficiente*terminoI#we calculate the terms coefficients with the definition of pascal's triangle
         elif seleccionador==3:#third
             linea="Given the past binomial, expand and give me the coeficient for the third term: "
             answerU=get_int(linea)
@@ -402,7 +402,7 @@ def binomio():
 def fractions():
     pregunta=[]
     exponenteA1=random.randint(-12,11)
-    exponenteA2=random.randint(-12,11)
+    exponenteA2=random.randint(-12,11)#exponents of the different variables
     exponenteZ1=random.randint(-12,11)
     exponenteZ2=random.randint(-12,11)
     exponenteW1=random.randint(-12,11)
@@ -416,7 +416,7 @@ def fractions():
         linea="What is the exponent of variable a: "
         userA=get_int(linea)
         pregunta.append(linea)
-        compA=(exponenteA1-exponenteA2)*exponenteFraccion
+        compA=(exponenteA1-exponenteA2)*exponenteFraccion#we calculate from subtracting the lower value to the top value and then multiplying by the exponent (exponent rules)
         return userA,compA,pregunta
     elif seleccionar==2:#ask for exponent of z
         linea="What is the exponent of variable z: "
@@ -486,10 +486,16 @@ def generalTest(num):
     elif num==10:
         respUser,resp,preguntaActual=factorization_cube()     
     return respUser,resp,preguntaActual
+#function check yes
+def checkYes(respuesta):
+    possibleErrorsYes=["Y","yes","YES","YEs","YeS"]#in case the user doesnt follow instructions
+    if respuesta in possibleErrorsYes:
+        respuesta="y"
+    return respuesta
 #function main
 def main(): 
     repeat=True
-    possibleErrorsYes=["Y","yes","YES","YEs","YeS"]#in case the user doesnt follow instructions
+    
     while repeat:
         calificacion=0#to keep the grade 
         mal=0##to know if it is wrong or right
@@ -505,13 +511,13 @@ def main():
                     calificacion,mal=verificador(resp,respUser,calificacion)#saves grade and if it is right or wrong
                     almacenarPreguntas(mal,preguntaActual,respUser,resp)#saves the question if it is wrong
                 mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")#asks if it wants to show the file
+                checkYes(mostrarArchivo)
                 if mostrarArchivo=="y":
                     mostrarRegistro()#shows file
                 else: 
                     print("Ok")
                 repeat=input("Wanna go again? (y/n)")#ask if it wants another test
-                if repeat in possibleErrorsYes:#to ensure that even if the user messes up, keep going
-                    repeat="y"
+                checkYes(repeat)
                 if repeat=="y":
                     repeat=True
                 else: 
@@ -533,13 +539,13 @@ def main():
                         cambio=1
                     almacenarPreguntas(mal,preguntaActual,respUser,resp)
                 mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
+                checkYes(mostrarArchivo)
                 if mostrarArchivo=="y":
                     mostrarRegistro()
                 else: 
                     print("Ok")
                 repeat=input("Wanna go again? (y/n)")
-                if repeat in possibleErrorsYes:#to ensure that even if the user messes up, keep going
-                    repeat="y"
+                checkYes(repeat)
                 if repeat=="y":
                     repeat=True
                 else: 
@@ -561,13 +567,13 @@ def main():
                         cambio=1
                     almacenarPreguntas(mal,preguntaActual,respUser,resp)
                 mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
+                checkYes(mostrarArchivo)
                 if mostrarArchivo=="y":
                     mostrarRegistro()
                 else: 
                     print("Ok")
                 repeat=input("Wanna go again? (y/n)")
-                if repeat in possibleErrorsYes:#to ensure that even if the user messes up, keep going
-                    repeat="y"
+                checkYes(repeat)
                 if repeat=="y":
                     repeat=True
                 else: 
@@ -582,13 +588,13 @@ def main():
                     calificacion,mal=verificador(resp,respUser,calificacion)
                     almacenarPreguntas(mal,preguntaActual,respUser,resp)
                 mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
+                checkYes(mostrarArchivo)
                 if mostrarArchivo=="y":
                     mostrarRegistro()
                 else: 
                     print("Ok")
                 repeat=input("Wanna go again? (y/n)")
-                if repeat in possibleErrorsYes:#to ensure that even if the user messes up, keep going
-                    repeat="y"
+                checkYes(repeat)
                 if repeat=="y":
                     repeat=True
                 else: 
@@ -603,13 +609,13 @@ def main():
                     calificacion,mal=verificador(resp,respUser,calificacion)
                     almacenarPreguntas(mal,preguntaActual,respUser,resp)
                 mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
+                checkYes(mostrarArchivo)
                 if mostrarArchivo=="y":
                     mostrarRegistro()
                 else: 
                     print("Ok")
                 repeat=input("Wanna go again? (y/n)")
-                if repeat in possibleErrorsYes:#to ensure that even if the user messes up, keep going
-                    repeat="y"
+                checkYes(repeat)
                 if repeat=="y":
                     repeat=True
                 else: 
@@ -631,13 +637,13 @@ def main():
                         cambio=1
                     almacenarPreguntas(mal,preguntaActual,respUser,resp)
                 mostrarArchivo=input("Do you want me to show you which questions you got wrong? (y/n)")
+                checkYes(mostrarArchivo)
                 if mostrarArchivo=="y":
                     mostrarRegistro()
                 else: 
                     print("Ok")
                 repeat=input("Wanna go again? (y/n)")
-                if repeat in possibleErrorsYes:#to ensure that even if the user messes up, keep going
-                    repeat="y"
+                checkYes(repeat)
                 if repeat=="y":
                     repeat=True
                 else: 
@@ -648,5 +654,5 @@ def main():
             case _:#if the user inserts an unvalid option, starts the whole thing over
                 print("Please insert a valid option")
                 main()#calls main again, starting over
-                """Here we run the program itself""""
+"""Here we run the program"""
 main()#calls for main and executes all of the program
